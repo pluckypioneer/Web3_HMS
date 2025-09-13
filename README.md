@@ -124,7 +124,7 @@
 
 1. **克隆项目**
 ```bash
-git clone <repository-url>
+git clone https://github.com/pluckypioneer/Web3_HMS
 cd Web3_HMS
 ```
 
@@ -327,7 +327,7 @@ docker-compose up -d nginx
 
 ## 📄 许可证
 
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+本项目采用Apache License 2.0许可证 - 查看 [LICENSE](https://github.com/pluckypioneer/Web3_HMS/blob/main/LICENSE) 文件了解详情。
 
 ## 🆘 支持与帮助
 

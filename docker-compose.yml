@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 version: '3.8'
 
 services:
@@ -124,3 +125,131 @@ volumes:
 networks:
   hms-network:
     driver: bridge
+=======
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: hms-postgres
+    environment:
+      POSTGRES_DB: hms_db
+      POSTGRES_USER: hms_user
+      POSTGRES_PASSWORD: hms_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - hms-network
+    restart: unless-stopped
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: hms-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - hms-network
+    restart: unless-stopped
+
+  # IPFS Node
+  ipfs:
+    image: ipfs/go-ipfs:latest
+    container_name: hms-ipfs
+    ports:
+      - "4001:4001"
+      - "5001:5001"
+      - "8080:8080"
+    volumes:
+      - ipfs_data:/data/ipfs
+    networks:
+      - hms-network
+    restart: unless-stopped
+
+  # Ethereum Node (Ganache for development)
+  ganache:
+    image: trufflesuite/ganache-cli:latest
+    container_name: hms-ganache
+    command: ganache-cli --host 0.0.0.0 --port 8545 --accounts 10 --defaultBalanceEther 100
+    ports:
+      - "8545:8545"
+    networks:
+      - hms-network
+    restart: unless-stopped
+
+  # Flask Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: hms-backend
+    environment:
+      - DATABASE_URL=postgresql://hms_user:hms_password@postgres:5432/hms_db
+      - REDIS_URL=redis://redis:6379/0
+      - WEB3_PROVIDER_URL=http://ganache:8545
+      - IPFS_URL=http://ipfs:5001
+      - FLASK_ENV=development
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+      - redis
+      - ipfs
+      - ganache
+    volumes:
+      - ./backend:/app
+      - backend_uploads:/app/uploads
+    networks:
+      - hms-network
+    restart: unless-stopped
+
+  # Vue Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: hms-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    networks:
+      - hms-network
+    restart: unless-stopped
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: hms-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - hms-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+  ipfs_data:
+  backend_uploads:
+
+networks:
+  hms-network:
+    driver: bridge
+>>>>>>> 9c651cc7465a98e25d6c673179480cb637092e73

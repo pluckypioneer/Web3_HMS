@@ -2,6 +2,7 @@
 Database models for Web3 HMS
 """
 
+from .user import User
 from .patient import Patient
 from .doctor import Doctor
 from .medical_record import MedicalRecord
@@ -13,6 +14,7 @@ from .data_hash import DataHash
 from .access_grant import AccessGrant
 
 __all__ = [
+    'User',
     'Patient',
     'Doctor', 
     'MedicalRecord',

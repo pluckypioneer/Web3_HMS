@@ -1,4 +1,4 @@
-const { ethers } = require("hardhat");
+const { ethers, network } = require("hardhat");
 
 async function main() {
   console.log("Deploying Web3 HMS Smart Contracts...");

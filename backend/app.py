@@ -13,7 +13,7 @@ import os
 from dotenv import load_dotenv
 
 from config import Config
-from extensions import db, redis_client
+from extensions import db, redis_client, init_extensions
 from api import api_bp
 from models import *  # Import all models to register them
 
@@ -26,7 +26,7 @@ def create_app():
     app.config.from_object(Config)
     
     # Initialize extensions
-    db.init_app(app)
+    init_extensions(app)
     migrate = Migrate(app, db)
     jwt = JWTManager(app)
     
@@ -56,10 +56,17 @@ def create_app():
     # Health check endpoint
     @app.route('/health')
     def health_check():
+        try:
+            # Test database connection
+            db.session.execute('SELECT 1')
+            db_status = 'connected'
+        except Exception:
+            db_status = 'disconnected'
+        
         return {
             'status': 'healthy',
             'version': '1.0.0',
-            'database': 'connected' if db.engine.execute('SELECT 1').fetchone() else 'disconnected'
+            'database': db_status
         }
     
     return app

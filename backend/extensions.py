@@ -9,12 +9,15 @@ import redis
 # Initialize extensions
 db = SQLAlchemy()
 jwt = JWTManager()
-redis_client = redis.Redis()
+redis_client = None
 
 def init_extensions(app):
     """Initialize extensions with app context"""
+    global redis_client
+    
     db.init_app(app)
     jwt.init_app(app)
     
-    # Configure Redis
-    redis_client.connection_pool = redis.ConnectionPool.from_url(app.config['REDIS_URL'])
+    # Configure Redis with proper connection parameters
+    redis_url = app.config.get('REDIS_URL', 'redis://localhost:6379/0')
+    redis_client = redis.from_url(redis_url, decode_responses=True)

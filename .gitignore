@@ -1,5 +1,63 @@
-planning_book.md
-PROJECT_SUMMARY.md
-README.md
-env.example
-docker-compose.yml
+# 项目文档应该被版本控制管理
+# planning_book.md
+# PROJECT_SUMMARY.md
+
+# 环境变量文件
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 依赖目录
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+
+# 日志文件
+*.log
+logs/
+
+# 临时文件
+tmp/
+temp/
+
+# 构建输出
+dist/
+build/
+*.egg-info/
+
+# 数据库文件
+*.db
+*.sqlite3
+
+# 上传文件目录
+uploads/
+
+# 区块链相关
+blockchain/cache/
+blockchain/artifacts/
+blockchain/deployments/
+blockchain/typechain-types/
+
+# Docker相关
+.dockerignore

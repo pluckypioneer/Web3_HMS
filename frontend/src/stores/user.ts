@@ -20,10 +20,10 @@ export const useUserStore = defineStore('user', () => {
 
   const isAuthenticated = computed(() => !!token.value && !!user.value)
   
-  const hasRole = computed(() => (roles: string[]) => {
+  const hasRole = (roles: string[]) => {
     if (!user.value) return false
     return roles.includes(user.value.role)
-  })
+  }
 
   const login = async (email: string, password: string) => {
     loading.value = true

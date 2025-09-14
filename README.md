@@ -344,10 +344,10 @@ A: 在 departments 表中插入新记录，或通过管理界面添加。
 
 ### 联系方式
 
-- **项目主页**: [GitHub Repository]
-- **问题反馈**: [GitHub Issues]
+- **项目主页**: [GitHub Repository](https://github.com/pluckypioneer/Web3_HMS)
+- **问题反馈**: [GitHub Issues](https://github.com/pluckypioneer/Web3_HMS/issues)
 - **技术交流**: [Discussion Forum]
-- **邮箱联系**: support@web3hms.com
+- **邮箱联系**: pluckypioneer258@proton.me
 
 ## 🙏 致谢
 

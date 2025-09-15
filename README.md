@@ -1,5 +1,7 @@
 # Web3 医院管理系统 (Web3 HMS)
 
+（🚩注：本项目目前仅为初步的构想和框架，存在大量尚未解决的问题，暂时无法用于实际应用。）
+
 基于区块链技术的现代化医院管理系统，融合 Solidity、Vue 3、Flask 技术栈，实现医疗数据不可篡改存证、全流程数字化管理、多角色协同办公。
 
 ## 🚀 项目特色
@@ -318,7 +320,7 @@ docker-compose up -d nginx
 
 ## 📝 更新日志
 
-### v1.0.0 (2024-01-01)
+### v1.0.0 (2025-09-13)
 - ✅ 初始版本发布
 - ✅ 核心功能模块完成
 - ✅ 区块链集成完成
@@ -344,10 +346,10 @@ A: 在 departments 表中插入新记录，或通过管理界面添加。
 
 ### 联系方式
 
-- **项目主页**: [GitHub Repository]
-- **问题反馈**: [GitHub Issues]
+- **项目主页**: [GitHub Repository](https://github.com/pluckypioneer/Web3_HMS)
+- **问题反馈**: [GitHub Issues](https://github.com/pluckypioneer/Web3_HMS/issues)
 - **技术交流**: [Discussion Forum]
-- **邮箱联系**: support@web3hms.com
+- **邮箱联系**: pluckypioneer258@proton.me
 
 ## 🙏 致谢
 

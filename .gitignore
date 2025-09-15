@@ -61,3 +61,4 @@ blockchain/typechain-types/
 
 # Docker相关
 .dockerignore
+docs/FIXES_SUMMARY.md

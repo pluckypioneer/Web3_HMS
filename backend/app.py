@@ -35,10 +35,10 @@ def create_app():
     
     # Initialize rate limiter
     limiter = Limiter(
-        app,
         key_func=get_remote_address,
         default_limits=["1000 per day", "100 per hour"]
     )
+    limiter.init_app(app)
     
     # Register blueprints
     app.register_blueprint(api_bp, url_prefix='/api')

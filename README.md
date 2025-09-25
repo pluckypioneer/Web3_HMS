@@ -61,8 +61,8 @@
 ### 后端技术
 - **Flask**: 轻量级 Python Web 框架
 - **Flask-RESTful**: RESTful API 开发
-- **SQLAlchemy**: Python ORM
-- **PostgreSQL**: 关系型数据库
+- **PyMongo**: MongoDB 驱动
+- **MongoDB**: NoSQL 数据库
 - **Redis**: 内存数据库
 - **JWT**: 身份认证
 - **Celery**: 异步任务队列
@@ -167,9 +167,9 @@ docker-compose ps
 系统运行前需要配置相关环境变量，主要包括：
 
 1. **数据库配置**
-   - `DATABASE_URL`: 生产环境数据库连接字符串
-   - `DEV_DATABASE_URL`: 开发环境数据库连接字符串
-   - `TEST_DATABASE_URL`: 测试环境数据库连接字符串
+   - `MONGO_URI`: 生产环境 MongoDB 连接字符串
+   - `DEV_MONGO_URI`: 开发环境 MongoDB 连接字符串
+   - `TEST_MONGO_URI`: 测试环境 MongoDB 连接字符串
 
 2. **安全密钥配置**
    - `SECRET_KEY`: Flask 应用密钥
@@ -199,7 +199,7 @@ docker-compose ps
 
 1. **启动数据库服务**
 ```bash
-docker-compose up postgres redis ipfs ganache -d
+docker-compose up mongodb redis ipfs ganache -d
 ```
 
 2. **启动后端服务**
@@ -310,10 +310,10 @@ docker-compose logs -f frontend
 ### 数据备份
 ```bash
 # 备份数据库
-docker-compose exec postgres pg_dump -U hms_user hms_db > backup.sql
+docker-compose exec mongodb mongodump --db hms_db --out /backup
 
 # 恢复数据库
-docker-compose exec -T postgres psql -U hms_user hms_db < backup.sql
+docker-compose exec mongodb mongorestore --db hms_db /backup/hms_db
 ```
 
 ## 🚀 部署指南
@@ -378,6 +378,11 @@ docker-compose up -d nginx
 
 ## 📝 更新日志
 
+### v1.2.0 (2025-09-25)
+- ✅ 数据库从 PostgreSQL 迁移至 MongoDB
+- ✅ 更新后端依赖配置
+- ✅ 修改数据模型以适应文档数据库
+
 ### v1.1.0 (2025-09-25)
 - ✅ 修复前端组件缺失问题
 - ✅ 完善用户认证系统
@@ -401,13 +406,13 @@ docker-compose up -d nginx
 ### 常见问题
 
 **Q: 如何重置管理员密码？**
-A: 通过数据库直接修改 users 表中的 password_hash 字段。
+A: 通过数据库直接修改 users 集合中的 password_hash 字段。
 
 **Q: 区块链交易失败怎么办？**
 A: 检查 Ganache 节点是否正常运行，确认账户余额充足。
 
 **Q: 如何添加新的科室？**
-A: 在 departments 表中插入新记录，或通过管理界面添加。
+A: 在 departments 集合中插入新文档，或通过管理界面添加。
 
 ### 联系方式
 

@@ -20,7 +20,7 @@ contract MedicalRecordHash {
     struct ModificationHistory {
         string newHash;
         uint256 timestamp;
-        address modifier;
+        address modifierAddress;
         string reason;
     }
 
@@ -35,7 +35,7 @@ contract MedicalRecordHash {
     
     // Events
     event RecordCreated(string indexed recordId, string patientId, string doctorId, string recordType, string hashValue);
-    event RecordModified(string indexed recordId, string newHash, address modifier, string reason);
+    event RecordModified(string indexed recordId, string newHash, address modifierAddress, string reason);
     event RecordDeactivated(string indexed recordId, address deactivator);
 
     // Modifiers
@@ -103,7 +103,7 @@ contract MedicalRecordHash {
         modificationHistory[recordId].push(ModificationHistory({
             newHash: newHash,
             timestamp: block.timestamp,
-            modifier: msg.sender,
+            modifierAddress: msg.sender,
             reason: reason
         }));
 

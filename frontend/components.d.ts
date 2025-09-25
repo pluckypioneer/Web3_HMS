@@ -7,11 +7,26 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AppointmentHistory: typeof import('./src/components/AppointmentHistory.vue')['default']
+    BlockchainRecords: typeof import('./src/components/BlockchainRecords.vue')['default']
+    ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElDropdown: typeof import('element-plus/es')['ElDropdown']
+    ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']
+    ElDropdownMenu: typeof import('element-plus/es')['ElDropdownMenu']
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
     ElInput: typeof import('element-plus/es')['ElInput']
+    ElMenu: typeof import('element-plus/es')['ElMenu']
+    ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+    ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
+    ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+    ExaminationReports: typeof import('./src/components/ExaminationReports.vue')['default']
+    MedicalRecords: typeof import('./src/components/MedicalRecords.vue')['default']
+    Navbar: typeof import('./src/components/Layout/Navbar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Sidebar: typeof import('./src/components/Layout/Sidebar.vue')['default']
   }
 }

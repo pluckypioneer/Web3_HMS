@@ -27,7 +27,7 @@ api.interceptors.request.use(
 // Response interceptor
 api.interceptors.response.use(
   (response) => {
-    return response
+    return response.data
   },
   (error) => {
     if (error.response?.status === 401) {
@@ -38,6 +38,8 @@ api.interceptors.response.use(
       ElMessage.error('权限不足')
     } else if (error.response?.status >= 500) {
       ElMessage.error('服务器错误，请稍后重试')
+    } else if (error.response?.data?.message) {
+      ElMessage.error(error.response.data.message)
     }
     return Promise.reject(error)
   }

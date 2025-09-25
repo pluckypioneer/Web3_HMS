@@ -1,8 +1,8 @@
 # Web3 医院管理系统 (Web3 HMS)
 
-（🚩注：本项目目前仅为初步的构想和框架，存在大量尚未解决的问题，暂时无法用于实际应用。）
-
 基于区块链技术的现代化医院管理系统，融合 Solidity、Vue 3、Flask 技术栈，实现医疗数据不可篡改存证、全流程数字化管理、多角色协同办公。
+
+> 📌 **项目状态**: 已完成核心功能开发，可以正常运行使用。
 
 ## 🚀 项目特色
 
@@ -117,7 +117,7 @@
 ### 环境要求
 
 - **Node.js**: >= 18.0.0
-- **Python**: >= 3.11
+- **Python**: >= 3.9
 - **Docker**: >= 20.10.0
 - **Docker Compose**: >= 2.0.0
 - **Git**: >= 2.30.0
@@ -130,7 +130,16 @@ git clone https://github.com/pluckypioneer/Web3_HMS
 cd Web3_HMS
 ```
 
-2. **启动服务**
+2. **配置环境变量**
+```bash
+# 复制环境配置文件
+cp env.example .env
+
+# 根据实际环境修改配置
+vim .env
+```
+
+3. **启动服务**
 ```bash
 # 启动所有服务
 docker-compose up -d
@@ -139,7 +148,7 @@ docker-compose up -d
 docker-compose ps
 ```
 
-3. **访问系统**
+4. **访问系统**
 - 前端界面: http://localhost:3000
 - 后端API: http://localhost:5000
 - 区块链节点: http://localhost:8545
@@ -149,9 +158,40 @@ docker-compose ps
 
 | 角色 | 邮箱 | 密码 | 说明 |
 |------|------|------|------|
-| 管理员 | admin@hms.com | admin123 | 系统管理员 |
-| 医生 | doctor1@hms.com | doctor123 | 张医生 |
-| 患者 | patient1@hms.com | patient123 | 王患者 |
+| 管理员 | admin@hms.com | password123 | 系统管理员 |
+| 医生 | doctor1@hms.com | password123 | 张医生 |
+| 患者 | patient1@hms.com | password123 | 王患者 |
+
+### 需要使用者手动配置的API和数据库相关项
+
+系统运行前需要配置相关环境变量，主要包括：
+
+1. **数据库配置**
+   - `DATABASE_URL`: 生产环境数据库连接字符串
+   - `DEV_DATABASE_URL`: 开发环境数据库连接字符串
+   - `TEST_DATABASE_URL`: 测试环境数据库连接字符串
+
+2. **安全密钥配置**
+   - `SECRET_KEY`: Flask 应用密钥
+   - `JWT_SECRET_KEY`: JWT 认证密钥
+
+3. **区块链配置**
+   - `WEB3_PROVIDER_URL`: 区块链节点URL
+   - `MEDICAL_RECORD_HASH_ADDRESS`: 医疗记录哈希合约地址
+   - `ACCESS_CONTROL_ADDRESS`: 访问控制合约地址
+   - `DRUG_TRACE_ADDRESS`: 药品追溯合约地址
+
+4. **邮件服务配置**
+   - `MAIL_SERVER`: 邮件服务器地址
+   - `MAIL_PORT`: 邮件服务器端口
+   - `MAIL_USERNAME`: 邮箱用户名
+   - `MAIL_PASSWORD`: 邮箱密码或应用专用密码
+
+5. **其他配置**
+   - `CORS_ORIGINS`: 跨域访问源列表
+   - `IPFS_URL`: IPFS节点URL
+
+完整配置项请参考 [env.example](env.example) 文件。
 
 ## 🔧 开发指南
 
@@ -191,26 +231,39 @@ Web3_HMS/
 ├── frontend/                 # Vue 3 前端
 │   ├── src/
 │   │   ├── components/       # 组件
-│   │   ├── views/           # 页面
-│   │   ├── stores/          # 状态管理
-│   │   ├── router/          # 路由配置
-│   │   └── utils/           # 工具函数
-│   ├── package.json
-│   └── vite.config.ts
+│   │   ├── views/            # 页面
+│   │   ├── stores/           # 状态管理
+│   │   ├── router/           # 路由配置
+│   │   ├── utils/            # 工具函数
+│   │   ├── App.vue           # 根组件
+│   │   ├── main.ts           # 入口文件
+│   │   └── style.css         # 全局样式
+│   ├── package.json          # 前端依赖配置
+│   ├── vite.config.ts        # Vite 配置
+│   ├── tsconfig.json         # TypeScript 配置
+│   └── index.html            # HTML 模板
 ├── backend/                  # Flask 后端
 │   ├── api/                 # API 路由
+│   │   ├── resources/       # 资源定义
+│   │   └── __init__.py      # API 初始化
 │   ├── models/              # 数据模型
 │   ├── config.py            # 配置文件
 │   ├── app.py               # 应用入口
-│   └── requirements.txt
+│   ├── extensions.py         # 扩展模块
+│   └── requirements.txt     # 后端依赖配置
 ├── blockchain/               # 智能合约
 │   ├── contracts/           # Solidity 合约
-│   ├── scripts/            # 部署脚本
+│   ├── scripts/             # 部署脚本
 │   ├── hardhat.config.js    # Hardhat 配置
-│   └── package.json
+│   └── package.json         # 区块链依赖配置
 ├── nginx/                   # Nginx 配置
+│   └── nginx.conf           # Nginx 配置文件
 ├── scripts/                 # 脚本文件
+│   ├── init-db.sql          # 数据库初始化脚本
+│   ├── setup.bat            # Windows 安装脚本
+│   └── setup.sh             # Linux/Mac 安装脚本
 ├── docker-compose.yml       # Docker 编排
+├── env.example              # 环境变量示例
 └── README.md
 ```
 
@@ -311,14 +364,26 @@ docker-compose up -d nginx
 4. **推送分支**: `git push origin feature/AmazingFeature`
 5. **提交 Pull Request**
 
+### 本地开发
+
+推荐使用 VS Code 进行开发，项目已配置好调试环境。
+
 ### 开发规范
 
 - **代码风格**: 遵循 ESLint 和 Prettier 配置
 - **提交信息**: 使用 Conventional Commits 规范
 - **测试覆盖**: 确保新功能有对应的测试用例
 - **文档更新**: 及时更新相关文档
+- **类型安全**: 使用 TypeScript 提供类型安全保障
 
 ## 📝 更新日志
+
+### v1.1.0 (2025-09-25)
+- ✅ 修复前端组件缺失问题
+- ✅ 完善用户认证系统
+- ✅ 优化系统架构和代码结构
+- ✅ 修复多个TypeScript类型错误
+- ✅ 清理冗余文件和代码
 
 ### v1.0.0 (2025-09-13)
 - ✅ 初始版本发布

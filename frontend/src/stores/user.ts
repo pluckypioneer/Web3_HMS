@@ -24,6 +24,12 @@ export const useUserStore = defineStore('user', () => {
     if (!user.value) return false
     return roles.includes(user.value.role)
   }
+  
+  const setAuth = (newToken: string, userData: User) => {
+    token.value = newToken
+    user.value = userData
+    localStorage.setItem('token', newToken)
+  }
 
   const login = async (email: string, password: string) => {
     loading.value = true
@@ -84,6 +90,7 @@ export const useUserStore = defineStore('user', () => {
     loading,
     isAuthenticated,
     hasRole,
+    setAuth,
     login,
     logout,
     initialize,

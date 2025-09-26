@@ -7,13 +7,15 @@ from flask import Flask
 from flask_cors import CORS
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
 import os
 from dotenv import load_dotenv
 
 from config import Config
-from extensions import redis_client, init_extensions
+from extensions import db, redis_client, init_extensions
 from api import api_bp
+from models import *  # Import all models to register them
 
 # Load environment variables
 load_dotenv()
@@ -25,6 +27,7 @@ def create_app():
     
     # Initialize extensions
     init_extensions(app)
+    migrate = Migrate(app, db)
     jwt = JWTManager(app)
     
     # Initialize CORS
@@ -47,6 +50,7 @@ def create_app():
     
     @app.errorhandler(500)
     def internal_error(error):
+        db.session.rollback()
         return {'error': 'Internal server error'}, 500
     
     # Health check endpoint
@@ -54,8 +58,7 @@ def create_app():
     def health_check():
         try:
             # Test database connection
-            from extensions import mongo_client
-            mongo_client.admin.command('ping')
+            db.session.execute('SELECT 1')
             db_status = 'connected'
         except Exception:
             db_status = 'disconnected'

@@ -10,7 +10,13 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev-secret-key-change-in-production'
     
     # Database configuration
-    MONGO_URI = os.environ.get('MONGO_URI') or 'mongodb://localhost:27017/hms_db'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+        'postgresql://hms_user:hms_password@localhost:5432/hms_db'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_ENGINE_OPTIONS = {
+        'pool_pre_ping': True,
+        'pool_recycle': 300,
+    }
     
     # Redis configuration
     REDIS_URL = os.environ.get('REDIS_URL') or 'redis://localhost:6379/0'
@@ -52,12 +58,13 @@ class Config:
 class DevelopmentConfig(Config):
     """Development configuration"""
     DEBUG = True
-    MONGO_URI = os.environ.get('DEV_MONGO_URI') or 'mongodb://localhost:27017/hms_dev'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
+        'postgresql://hms_user:hms_password@localhost:5432/hms_dev'
 
 class ProductionConfig(Config):
     """Production configuration"""
     DEBUG = False
-    MONGO_URI = os.environ.get('MONGO_URI')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     
     # Security settings
     SESSION_COOKIE_SECURE = True
@@ -67,7 +74,8 @@ class ProductionConfig(Config):
 class TestingConfig(Config):
     """Testing configuration"""
     TESTING = True
-    MONGO_URI = os.environ.get('TEST_MONGO_URI') or 'mongodb://localhost:27017/hms_test'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL') or \
+        'postgresql://hms_user:hms_password@localhost:5432/hms_test'
     WTF_CSRF_ENABLED = False
 
 config = {

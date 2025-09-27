@@ -7,7 +7,7 @@
       @select="handleMenuSelect"
     >
       <el-menu-item index="dashboard">
-        <el-icon><Home /></el-icon>
+        <el-icon><HomeFilled /></el-icon>
         <span>首页</span>
       </el-menu-item>
       
@@ -31,7 +31,7 @@
       </el-menu-item>
       
       <el-menu-item index="prescriptions" v-if="hasPermission(['doctor', 'admin'])">
-        <el-icon><MedicineBox /></el-icon>
+        <el-icon><Document/></el-icon>
         <span>处方管理</span>
       </el-menu-item>
       
@@ -49,6 +49,11 @@
         <el-icon><Histogram /></el-icon>
         <span>统计分析</span>
       </el-menu-item>
+      
+      <el-menu-item index="settings" v-if="hasPermission(['admin'])">
+        <el-icon><Setting /></el-icon>
+        <span>系统设置</span>
+      </el-menu-item>
     </el-menu>
   </el-scrollbar>
 </template>
@@ -56,6 +61,12 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
+import {
+  HomeFilled, UserFilled, Calendar, Document, 
+  Box, Link, Histogram, Setting
+} from '@element-plus/icons-vue'
+import { calendarEmits } from 'element-plus/lib'
+import { textProps } from 'element-plus'
 
 const router = useRouter()
 const userStore = useUserStore()
@@ -69,7 +80,8 @@ const routeMap: Record<string, string> = {
   'prescriptions': '/prescriptions',
   'inventory': '/inventory',
   'blockchain': '/blockchain',
-  'statistics': '/statistics'
+  'statistics': '/statistics',
+  'settings': '/settings'
 }
 
 const handleMenuSelect = (index: string) => {

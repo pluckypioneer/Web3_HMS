@@ -1,6 +1,7 @@
 // src/router/index.ts (更新后)
 import { createRouter, createWebHistory } from 'vue-router'
 import { useUserStore } from '@/stores/user'
+import { ElMessage } from 'element-plus'
 import Layout from '@/views/Layout.vue'
 
 const router = createRouter({
@@ -89,6 +90,12 @@ const router = createRouter({
           path: 'profile',
           name: 'Profile',
           component: () => import('@/views/Profile.vue')
+        },
+        {
+          path: 'settings',
+          name: 'Settings',
+          component: () => import('@/views/Settings.vue'),
+          meta: { role: ['admin'] }
         }
       ]
     },
@@ -101,7 +108,7 @@ const router = createRouter({
 })
 
 // 导航守卫
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
   const userStore = useUserStore()
   
   // 检查是否需要登录

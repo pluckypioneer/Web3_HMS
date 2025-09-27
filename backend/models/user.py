@@ -6,7 +6,7 @@ from datetime import datetime
 from extensions import db
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
-import hashlib
+import bcrypt
 
 class User(db.Model):
     """User model for authentication"""
@@ -28,12 +28,14 @@ class User(db.Model):
         return f'<User {self.username}>'
     
     def set_password(self, password):
-        """Set password hash"""
-        self.password_hash = hashlib.sha256(password.encode('utf-8')).hexdigest()
+        """Set password hash using bcrypt"""
+        # Generate salt and hash password
+        salt = bcrypt.gensalt()
+        self.password_hash = bcrypt.hashpw(password.encode('utf-8'), salt).decode('utf-8')
     
     def check_password(self, password):
-        """Check password"""
-        return self.password_hash == hashlib.sha256(password.encode('utf-8')).hexdigest()
+        """Check password using bcrypt"""
+        return bcrypt.checkpw(password.encode('utf-8'), self.password_hash.encode('utf-8'))
     
     def to_dict(self):
         """Convert to dictionary"""

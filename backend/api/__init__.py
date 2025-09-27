@@ -16,6 +16,7 @@ from .resources.appointment import AppointmentResource, AppointmentListResource
 from .resources.medical_record import MedicalRecordResource, MedicalRecordListResource
 from .resources.blockchain import BlockchainResource
 from .resources.auth import LoginResource, UserProfileResource
+from .resources.drug import DrugResource, DrugListResource
 
 # Register resources
 api.add_resource(PatientListResource, '/patients')
@@ -29,3 +30,5 @@ api.add_resource(MedicalRecordResource, '/medical-records/<string:record_id>')
 api.add_resource(BlockchainResource, '/blockchain/<string:action>')
 api.add_resource(LoginResource, '/auth/login')
 api.add_resource(UserProfileResource, '/auth/me')
+api.add_resource(DrugListResource, '/drugs')
+api.add_resource(DrugResource, '/drugs/<string:drug_id>')

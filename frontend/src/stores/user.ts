@@ -5,12 +5,16 @@ import api from '@/utils/api'
 
 export interface User {
   id: string
-  name: string
+  name?: string
+  username?: string
   email: string
   role: string
   blockchain_addr?: string
   dept_name?: string
   title?: string
+  created_at?: string
+  last_login?: string
+  updated_at?: string
 }
 
 export const useUserStore = defineStore('user', () => {

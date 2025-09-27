@@ -143,16 +143,46 @@ import { ElMessage } from 'element-plus'
 import dayjs from 'dayjs'
 import api from '@/utils/api'
 
-const blockchainStatus = ref({
+interface BlockchainStatus {
+  connected: boolean
+  latestBlock: number
+  networkId: number
+}
+
+interface Contract {
+  name: string
+  address: string
+  network: string
+  deploy_time: string
+  is_active: boolean
+}
+
+interface Transaction {
+  tx_hash: string
+  data_type: string
+  block_number: number
+  gas_used: number
+  created_at: string
+}
+
+interface VerificationResult {
+  valid: boolean
+  current_hash: string
+  provided_hash: string
+  blockchain_verified: boolean
+  block_number?: number
+}
+
+const blockchainStatus = ref<BlockchainStatus>({
   connected: false,
   latestBlock: 0,
   networkId: 0
 })
 
-const contracts = ref([])
-const recentTransactions = ref([])
+const contracts = ref<Contract[]>([])
+const recentTransactions = ref<Transaction[]>([])
 const verifying = ref(false)
-const verificationResult = ref(null)
+const verificationResult = ref<VerificationResult | null>(null)
 
 const verificationForm = ref({
   recordId: '',

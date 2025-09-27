@@ -41,6 +41,12 @@ logs/
 tmp/
 temp/
 
+# 测试相关
+# test/ 文件夹包含调试和测试脚本，建议保留
+# 如果有敏感测试数据，可以忽略特定文件:
+# test/sensitive_data.json
+# test/*.local.*
+
 # 构建输出
 dist/
 build/

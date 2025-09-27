@@ -87,7 +87,7 @@ const handleLogin = async () => {
     })
     
     // 保存令牌和用户信息
-    const { token: newToken, user: userData } = response.data
+    const { token: newToken, user: userData } = response as any
     
     userStore.token = newToken
     userStore.user = userData

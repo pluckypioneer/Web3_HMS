@@ -35,7 +35,7 @@ export const useUserStore = defineStore('user', () => {
     loading.value = true
     try {
       const response = await api.post('/auth/login', { email, password })
-      const { token: newToken, user: userData } = response.data
+      const { token: newToken, user: userData } = response as any
       
       token.value = newToken
       user.value = userData
@@ -62,7 +62,7 @@ export const useUserStore = defineStore('user', () => {
     if (token.value) {
       try {
         const response = await api.get('/auth/me')
-        user.value = response.data
+        user.value = response as any
       } catch (error) {
         logout()
       }

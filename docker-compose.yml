@@ -8,7 +8,7 @@ services:
     environment:
       POSTGRES_DB: hms_db
       POSTGRES_USER: hms_user
-      POSTGRES_PASSWORD: hms_password
+      POSTGRES_PASSWORD: hms
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
@@ -62,7 +62,7 @@ services:
       dockerfile: Dockerfile
     container_name: hms-backend
     environment:
-      - DATABASE_URL=postgresql://hms_user:hms_password@postgres:5432/hms_db
+      - DATABASE_URL=postgresql://hms_user:hms@postgres:5432/hms_db
       - REDIS_URL=redis://redis:6379/0
       - WEB3_PROVIDER_URL=http://ganache:8545  # 容器间用服务名通信，而非localhost
       - IPFS_URL=http://ipfs:5001
@@ -87,6 +87,8 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     container_name: hms-frontend
+    environment:
+      - VITE_API_URL=http://backend:5000
     ports:
       - "3000:3000"
     depends_on:

@@ -1,120 +1,122 @@
-# Web3 医院管理系统 (Web3 HMS)
+# Web3 Hospital Management System (Web3 HMS)
 
-基于区块链技术的现代化医院管理系统，融合 Solidity、Vue 3、Flask 技术栈，实现医疗数据不可篡改存证、全流程数字化管理、多角色协同办公。
+DOCUMENT:[Chinese中文](https://github.com/pluckypioneer/Web3_HMS/blob/main/README_zh.md)、[English](https://github.com/pluckypioneer/Web3_HMS/blob/main/README.md)
 
-> 📌 **项目状态**: 已完成核心功能开发，可以正常运行使用。
+A modern hospital management system based on blockchain technology, integrating Solidity, Vue 3, and Flask technology stacks to achieve tamper-proof medical data storage, full-process digital management, and multi-role collaborative work.
 
-## 🚀 项目特色
+> 📌 **Project Status**: Core functionality development completed, ready for normal operation.
 
-- **🔗 区块链集成**: 医疗数据哈希存证，确保数据完整性和不可篡改性
-- **🏥 医疗专业**: 覆盖患者服务、临床诊疗、住院管理、药品物资等核心场景
-- **🔐 数据安全**: 基于 RBAC 的权限控制，支持细粒度数据访问管理
-- **📱 现代化UI**: Vue 3 + Element Plus，响应式设计，多端适配
-- **🐳 容器化部署**: Docker 容器化，支持一键部署和扩展
-- **📊 实时监控**: 区块链状态监控，系统健康检查
+## 🚀 Project Features
 
-## 🏗️ 系统架构
+- **🔗 Blockchain Integration**: Medical data hash storage to ensure data integrity and immutability
+- **🏥 Medical Professionalism**: Covers core scenarios such as patient services, clinical diagnosis and treatment, inpatient management, and pharmaceutical supplies
+- **🔐 Data Security**: RBAC-based permission control, supporting fine-grained data access management
+- **📱 Modern UI**: Vue 3 + Element Plus, responsive design, multi-device adaptation
+- **🐳 Containerized Deployment**: Docker containerization, supporting one-click deployment and scaling
+- **📊 Real-time Monitoring**: Blockchain status monitoring, system health checks
+
+## 🏗️ System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                        用户层                                │
+│                      User Layer                             │
 ├─────────────────────────────────────────────────────────────┤
-│  患者端(Web/H5)  │  医护端(Web)  │  管理端(Web)  │  运维端(Web) │
+│  Patient End (Web/H5)  │  Medical Staff End (Web)  │  Admin End (Web)  │  Operation End (Web) │
 └─────────────────────────────────────────────────────────────┘
                                 │
 ┌─────────────────────────────────────────────────────────────┐
-│                      前端层 (Vue 3)                          │
+│                   Frontend Layer (Vue 3)                    │
 ├─────────────────────────────────────────────────────────────┤
-│  Element Plus UI  │  Vue Router  │  Pinia状态管理  │  Web3.js  │
+│  Element Plus UI  │  Vue Router  │  Pinia State Management  │  Web3.js  │
 └─────────────────────────────────────────────────────────────┘
                                 │
 ┌─────────────────────────────────────────────────────────────┐
-│                    API网关层 (Flask)                         │
+│                  API Gateway Layer (Flask)                  │
 ├─────────────────────────────────────────────────────────────┤
-│  JWT认证  │  RBAC权限  │  请求限流  │  跨域处理  │  日志记录  │
+│  JWT Authentication  │  RBAC Permissions  │  Request Throttling  │  CORS Handling  │  Logging  │
 └─────────────────────────────────────────────────────────────┘
                                 │
 ┌─────────────────────────────────────────────────────────────┐
-│                    业务逻辑层 (Flask)                        │
+│               Business Logic Layer (Flask)                  │
 ├─────────────────────────────────────────────────────────────┤
-│ 患者服务 │ 临床诊疗 │ 住院管理 │ 药品物资 │ 运营管理 │ 统计分析 │
+│ Patient Services │ Clinical Diagnosis │ Inpatient Management │ Pharmaceutical Supplies │ Operation Management │ Statistical Analysis │
 └─────────────────────────────────────────────────────────────┘
                                 │
 ┌─────────────────────────────────────────────────────────────┐
-│                        数据层                                │
+│                        Data Layer                           │
 ├─────────────────────────────────────────────────────────────┤
-│ PostgreSQL │ Redis缓存 │ 区块链 │ IPFS存储 │ 文件系统 │
+│ PostgreSQL │ Redis Cache │ Blockchain │ IPFS Storage │ File System │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## 🛠️ 技术栈
+## 🛠️ Technology Stack
 
-### 前端技术
-- **Vue 3**: 渐进式 JavaScript 框架
-- **Element Plus**: Vue 3 组件库
-- **Vue Router**: 官方路由管理器
-- **Pinia**: 状态管理库
-- **Web3.js**: 区块链交互库
-- **TypeScript**: 类型安全的 JavaScript
-- **Vite**: 现代化构建工具
+### Frontend Technology
+- **Vue 3**: Progressive JavaScript framework
+- **Element Plus**: Vue 3 component library
+- **Vue Router**: Official routing manager
+- **Pinia**: State management library
+- **Web3.js**: Blockchain interaction library
+- **TypeScript**: Type-safe JavaScript
+- **Vite**: Modern build tool
 
-### 后端技术
-- **Flask**: 轻量级 Python Web 框架
-- **Flask-RESTful**: RESTful API 开发
+### Backend Technology
+- **Flask**: Lightweight Python Web framework
+- **Flask-RESTful**: RESTful API development
 - **SQLAlchemy**: Python ORM
-- **PostgreSQL**: 关系型数据库
-- **Redis**: 内存数据库
-- **JWT**: 身份认证
-- **Celery**: 异步任务队列
+- **PostgreSQL**: Relational database
+- **Redis**: In-memory database
+- **JWT**: Identity authentication
+- **Celery**: Asynchronous task queue
 
-### 区块链技术
-- **Solidity**: 智能合约开发语言
-- **Hardhat**: 以太坊开发环境
-- **Web3.js**: 前端区块链交互
-- **IPFS**: 分布式文件存储
+### Blockchain Technology
+- **Solidity**: Smart contract development language
+- **Hardhat**: Ethereum development environment
+- **Web3.js**: Frontend blockchain interaction
+- **IPFS**: Decentralized file storage
 
-### 部署运维
-- **Docker**: 容器化平台
-- **Docker Compose**: 多容器编排
-- **Nginx**: 反向代理服务器
-- **Gunicorn**: WSGI HTTP 服务器
+### Deployment & Operations
+- **Docker**: Containerization platform
+- **Docker Compose**: Multi-container orchestration
+- **Nginx**: Reverse proxy server
+- **Gunicorn**: WSGI HTTP server
 
-## 📋 核心功能
+## 📋 Core Features
 
-### 患者服务模块
-- ✅ 多渠道预约挂号
-- ✅ 电子就诊卡管理
-- ✅ 病历查询（本人）
-- ✅ 医保结算
-- ✅ 检查报告查看
+### Patient Service Module
+- ✅ Multi-channel appointment registration
+- ✅ Electronic medical card management
+- ✅ Medical record inquiry (for self)
+- ✅ Medical insurance settlement
+- ✅ Examination report viewing
 
-### 临床诊疗模块
-- ✅ 电子病历录入
-- ✅ 医嘱管理
-- ✅ 处方开具与审核
-- ✅ 检查检验申请
-- ✅ 手术麻醉管理
+### Clinical Diagnosis Module
+- ✅ Electronic medical record entry
+- ✅ Medical order management
+- ✅ Prescription issuance and review
+- ✅ Examination and test application
+- ✅ Surgery and anesthesia management
 
-### 住院管理模块
-- ✅ 床位分配与管理
-- ✅ 住院费用实时核算
-- ✅ 出院结算
-- ✅ 护理计划与记录
+### Inpatient Management Module
+- ✅ Bed allocation and management
+- ✅ Real-time calculation of inpatient expenses
+- ✅ Discharge settlement
+- ✅ Nursing plans and records
 
-### 药品与物资模块
-- ✅ 药品库存管理
-- ✅ 高值耗材溯源
-- ✅ 耗材领用与核销
+### Pharmaceutical & Supplies Module
+- ✅ Drug inventory management
+- ✅ High-value consumable traceability
+- ✅ Consumable requisition and verification
 
-### 区块链功能
-- ✅ 医疗数据哈希存证
-- ✅ 数据访问权限控制
-- ✅ 药品供应链溯源
-- ✅ 数据完整性验证
+### Blockchain Features
+- ✅ Medical data hash storage
+- ✅ Data access permission control
+- ✅ Pharmaceutical supply chain traceability
+- ✅ Data integrity verification
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 环境要求
+### Environment Requirements
 
 - **Node.js**: >= 18.0.0
 - **Python**: >= 3.9
@@ -122,101 +124,101 @@
 - **Docker Compose**: >= 2.0.0
 - **Git**: >= 2.30.0
 
-### 一键部署
+### One-click Deployment
 
-1. **克隆项目**
+1. **Clone the project**
 ```bash
 git clone https://github.com/pluckypioneer/Web3_HMS
 cd Web3_HMS
 ```
 
-2. **配置环境变量**
+2. **Configure environment variables**
 ```bash
-# 复制环境配置文件
+# Copy environment configuration file
 cp env.example .env
 
-# 根据实际环境修改配置
+# Modify configuration according to actual environment
 vim .env
 ```
 
-3. **启动服务**
+3. **Start services**
 ```bash
-# 启动所有服务
+# Start all services
 docker-compose up -d
 
-# 查看服务状态
+# Check service status
 docker-compose ps
 ```
 
-4. **访问系统**
-- 前端界面: http://localhost:3000
-- 后端API: http://localhost:5000
-- 区块链节点: http://localhost:8545
-- IPFS节点: http://localhost:5001
+4. **Access the system**
+- Frontend interface: http://localhost:3000
+- Backend API: http://localhost:5000
+- Blockchain node: http://localhost:8545
+- IPFS node: http://localhost:5001
 
-### 默认账户
+### Default Accounts
 
-| 角色 | 邮箱 | 密码 | 说明 |
+| Role | Email | Password | Description |
 |------|------|------|------|
-| 管理员 | admin@hms.com | password123 | 系统管理员 |
-| 医生 | doctor1@hms.com | password123 | 张医生 |
-| 患者 | patient1@hms.com | password123 | 王患者 |
+| Administrator | admin@hms.com | password123 | System administrator |
+| Doctor | doctor1@hms.com | password123 | Dr. Zhang |
+| Patient | patient1@hms.com | password123 | Patient Wang |
 
-### 需要使用者手动配置的API和数据库相关项
+### API and Database Configuration Items That Require Manual Setup
 
-系统运行前需要配置相关环境变量，主要包括：
+Relevant environment variables need to be configured before the system runs, mainly including:
 
-1. **数据库配置**
-   - `DATABASE_URL`: 生产环境数据库连接字符串
-   - `DEV_DATABASE_URL`: 开发环境数据库连接字符串
-   - `TEST_DATABASE_URL`: 测试环境数据库连接字符串
+1. **Database Configuration**
+   - `DATABASE_URL`: Database connection string for production environment
+   - `DEV_DATABASE_URL`: Database connection string for development environment
+   - `TEST_DATABASE_URL`: Database connection string for test environment
 
-2. **安全密钥配置**
-   - `SECRET_KEY`: Flask 应用密钥
-   - `JWT_SECRET_KEY`: JWT 认证密钥
+2. **Security Key Configuration**
+   - `SECRET_KEY`: Flask application key
+   - `JWT_SECRET_KEY`: JWT authentication key
 
-3. **区块链配置**
-   - `WEB3_PROVIDER_URL`: 区块链节点URL
-   - `MEDICAL_RECORD_HASH_ADDRESS`: 医疗记录哈希合约地址
-   - `ACCESS_CONTROL_ADDRESS`: 访问控制合约地址
-   - `DRUG_TRACE_ADDRESS`: 药品追溯合约地址
+3. **Blockchain Configuration**
+   - `WEB3_PROVIDER_URL`: Blockchain node URL
+   - `MEDICAL_RECORD_HASH_ADDRESS`: Medical record hash contract address
+   - `ACCESS_CONTROL_ADDRESS`: Access control contract address
+   - `DRUG_TRACE_ADDRESS`: Drug traceability contract address
 
-4. **邮件服务配置**
-   - `MAIL_SERVER`: 邮件服务器地址
-   - `MAIL_PORT`: 邮件服务器端口
-   - `MAIL_USERNAME`: 邮箱用户名
-   - `MAIL_PASSWORD`: 邮箱密码或应用专用密码
+4. **Email Service Configuration**
+   - `MAIL_SERVER`: Email server address
+   - `MAIL_PORT`: Email server port
+   - `MAIL_USERNAME`: Email username
+   - `MAIL_PASSWORD`: Email password or application-specific password
 
-5. **其他配置**
-   - `CORS_ORIGINS`: 跨域访问源列表
-   - `IPFS_URL`: IPFS节点URL
+5. **Other Configurations**
+   - `CORS_ORIGINS`: List of cross-origin access sources
+   - `IPFS_URL`: IPFS node URL
 
-完整配置项请参考 [env.example](env.example) 文件。
+For complete configuration items, please refer to the [env.example](env.example) file.
 
-## 🔧 开发指南
+## 🔧 Development Guide
 
-### 本地开发环境
+### Local Development Environment
 
-1. **启动数据库服务**
+1. **Start database services**
 ```bash
 docker-compose up postgres redis ipfs ganache -d
 ```
 
-2. **启动后端服务**
+2. **Start backend service**
 ```bash
 cd backend
 pip install -r requirements.txt
 python app.py
 ```
 
-3. **启动前端服务**
+3. **Start frontend service**
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-4. **部署智能合约**
+4. **Deploy smart contracts**
 ```bash
 cd blockchain
 npm install
@@ -224,210 +226,210 @@ npx hardhat compile
 npx hardhat run scripts/deploy.js --network localhost
 ```
 
-### 项目结构
+### Project Structure
 
 ```
 Web3_HMS/
-├── frontend/                 # Vue 3 前端
+├── frontend/                 # Vue 3 frontend
 │   ├── src/
-│   │   ├── components/       # 组件
-│   │   ├── views/            # 页面
-│   │   ├── stores/           # 状态管理
-│   │   ├── router/           # 路由配置
-│   │   ├── utils/            # 工具函数
-│   │   ├── App.vue           # 根组件
-│   │   ├── main.ts           # 入口文件
-│   │   └── style.css         # 全局样式
-│   ├── package.json          # 前端依赖配置
-│   ├── vite.config.ts        # Vite 配置
-│   ├── tsconfig.json         # TypeScript 配置
-│   └── index.html            # HTML 模板
-├── backend/                  # Flask 后端
-│   ├── api/                 # API 路由
-│   │   ├── resources/       # 资源定义
-│   │   └── __init__.py      # API 初始化
-│   ├── models/              # 数据模型
-│   ├── config.py            # 配置文件
-│   ├── app.py               # 应用入口
-│   ├── extensions.py         # 扩展模块
-│   └── requirements.txt     # 后端依赖配置
-├── blockchain/               # 智能合约
-│   ├── contracts/           # Solidity 合约
-│   ├── scripts/             # 部署脚本
-│   ├── hardhat.config.js    # Hardhat 配置
-│   └── package.json         # 区块链依赖配置
-├── nginx/                   # Nginx 配置
-│   └── nginx.conf           # Nginx 配置文件
-├── scripts/                 # 脚本文件
-│   ├── init-db.sql          # 数据库初始化脚本
-│   ├── setup.bat            # Windows 安装脚本
-│   └── setup.sh             # Linux/Mac 安装脚本
-├── docker-compose.yml       # Docker 编排
-├── env.example              # 环境变量示例
+│   │   ├── components/       # Components
+│   │   ├── views/            # Pages
+│   │   ├── stores/           # State management
+│   │   ├── router/           # Routing configuration
+│   │   ├── utils/            # Utility functions
+│   │   ├── App.vue           # Root component
+│   │   ├── main.ts           # Entry file
+│   │   └── style.css         # Global styles
+│   ├── package.json          # Frontend dependency configuration
+│   ├── vite.config.ts        # Vite configuration
+│   ├── tsconfig.json         # TypeScript configuration
+│   └── index.html            # HTML template
+├── backend/                  # Flask backend
+│   ├── api/                 # API routes
+│   │   ├── resources/       # Resource definitions
+│   │   └── __init__.py      # API initialization
+│   ├── models/              # Data models
+│   ├── config.py            # Configuration file
+│   ├── app.py               # Application entry
+│   ├── extensions.py         # Extension modules
+│   └── requirements.txt     # Backend dependency configuration
+├── blockchain/               # Smart contracts
+│   ├── contracts/           # Solidity contracts
+│   ├── scripts/             # Deployment scripts
+│   ├── hardhat.config.js    # Hardhat configuration
+│   └── package.json         # Blockchain dependency configuration
+├── nginx/                   # Nginx configuration
+│   └── nginx.conf           # Nginx configuration file
+├── scripts/                 # Script files
+│   ├── init-db.sql          # Database initialization script
+│   ├── setup.bat            # Windows installation script
+│   └── setup.sh             # Linux/Mac installation script
+├── docker-compose.yml       # Docker orchestration
+├── env.example              # Environment variable example
 └── README.md
 ```
 
-## 🔐 安全特性
+## 🔐 Security Features
 
-### 数据安全
-- **传输加密**: 全接口 HTTPS 加密
-- **存储加密**: 敏感数据加密存储
-- **访问控制**: 基于 RBAC 的细粒度权限管理
-- **审计日志**: 完整的操作审计追踪
+### Data Security
+- **Transmission Encryption**: Full-interface HTTPS encryption
+- **Storage Encryption**: Encrypted storage of sensitive data
+- **Access Control**: RBAC-based fine-grained permission management
+- **Audit Logs**: Complete operation audit tracking
 
-### 区块链安全
-- **智能合约审计**: Mythril、Slither 安全扫描
-- **哈希验证**: SHA-256 数据完整性校验
-- **权限管理**: 基于区块链地址的访问控制
-- **不可篡改**: 医疗数据哈希永久存证
+### Blockchain Security
+- **Smart Contract Auditing**: Mythril, Slither security scanning
+- **Hash Verification**: SHA-256 data integrity verification
+- **Permission Management**: Blockchain address-based access control
+- **Immutability**: Permanent storage of medical data hashes
 
-### 合规性
-- **医疗数据合规**: 符合《电子病历应用管理规范》
-- **隐私保护**: 遵循《个人信息保护法》
-- **区块链合规**: 符合司法存证标准
+### Compliance
+- **Medical Data Compliance**: Compliant with "Electronic Medical Record Application Management Specifications"
+- **Privacy Protection**: In line with "Personal Information Protection Law"
+- **Blockchain Compliance**: Meets judicial evidence storage standards
 
-## 📊 监控与运维
+## 📊 Monitoring and Operations
 
-### 健康检查
+### Health Check
 ```bash
-# 检查服务状态
+# Check service status
 curl http://localhost:5000/health
 
-# 检查区块链连接
+# Check blockchain connection
 curl http://localhost:5000/api/blockchain/status
 ```
 
-### 日志查看
+### Log Viewing
 ```bash
-# 查看所有服务日志
+# View all service logs
 docker-compose logs -f
 
-# 查看特定服务日志
+# View specific service logs
 docker-compose logs -f backend
 docker-compose logs -f frontend
 ```
 
-### 数据备份
+### Data Backup
 ```bash
-# 备份数据库
+# Backup database
 docker-compose exec postgres pg_dump -U hms_user hms_db > backup.sql
 
-# 恢复数据库
+# Restore database
 docker-compose exec -T postgres psql -U hms_user hms_db < backup.sql
 ```
 
-## 🚀 部署指南
+## 🚀 Deployment Guide
 
-### 生产环境部署
+### Production Environment Deployment
 
-1. **环境配置**
+1. **Environment Configuration**
 ```bash
-# 复制环境配置文件
+# Copy environment configuration file
 cp .env.example .env
 
-# 修改生产环境配置
+# Modify production environment configuration
 vim .env
 ```
 
-2. **SSL 证书配置**
+2. **SSL Certificate Configuration**
 ```bash
-# 生成 SSL 证书（开发环境）
+# Generate SSL certificate (development environment)
 openssl req -x509 -newkey rsa:4096 -keyout nginx/ssl/key.pem -out nginx/ssl/cert.pem -days 365 -nodes
 
-# 修改 nginx.conf 启用 HTTPS
+# Modify nginx.conf to enable HTTPS
 ```
 
-3. **启动生产服务**
+3. **Start Production Services**
 ```bash
-# 构建并启动服务
+# Build and start services
 docker-compose -f docker-compose.prod.yml up -d
 
-# 检查服务状态
+# Check service status
 docker-compose ps
 ```
 
-### 扩展部署
+### Scaling Deployment
 
 ```bash
-# 水平扩展后端服务
+# Horizontally scale backend services
 docker-compose up -d --scale backend=3
 
-# 添加负载均衡
+# Add load balancing
 docker-compose up -d nginx
 ```
 
-## 🤝 贡献指南
+## 🤝 Contribution Guide
 
-1. **Fork 项目**
-2. **创建特性分支**: `git checkout -b feature/AmazingFeature`
-3. **提交更改**: `git commit -m 'Add some AmazingFeature'`
-4. **推送分支**: `git push origin feature/AmazingFeature`
-5. **提交 Pull Request**
+1. **Fork the project**
+2. **Create a feature branch**: `git checkout -b feature/AmazingFeature`
+3. **Commit changes**: `git commit -m 'Add some AmazingFeature'`
+4. **Push the branch**: `git push origin feature/AmazingFeature`
+5. **Submit a Pull Request**
 
-### 本地开发
+### Local Development
 
-推荐使用 VS Code 进行开发，项目已配置好调试环境。
+It is recommended to use VS Code for development; the project has a pre-configured debugging environment.
 
-### 开发规范
+### Development Specifications
 
-- **代码风格**: 遵循 ESLint 和 Prettier 配置
-- **提交信息**: 使用 Conventional Commits 规范
-- **测试覆盖**: 确保新功能有对应的测试用例
-- **文档更新**: 及时更新相关文档
-- **类型安全**: 使用 TypeScript 提供类型安全保障
+- **Code Style**: Follow ESLint and Prettier configurations
+- **Commit Messages**: Use Conventional Commits specifications
+- **Test Coverage**: Ensure new features have corresponding test cases
+- **Documentation Updates**: Timely update relevant documentation
+- **Type Safety**: Use TypeScript to provide type safety guarantees
 
-## 📝 更新日志
+## 📝 Changelog
 
 ### v1.1.0 (2025-09-25)
-- ✅ 修复前端组件缺失问题
-- ✅ 完善用户认证系统
-- ✅ 优化系统架构和代码结构
-- ✅ 修复多个TypeScript类型错误
-- ✅ 清理冗余文件和代码
+- ✅ Fixed missing frontend components
+- ✅ Improved user authentication system
+- ✅ Optimized system architecture and code structure
+- ✅ Fixed multiple TypeScript type errors
+- ✅ Cleaned up redundant files and code
 
 ### v1.0.0 (2025-09-13)
-- ✅ 初始版本发布
-- ✅ 核心功能模块完成
-- ✅ 区块链集成完成
-- ✅ Docker 容器化部署
-- ✅ 基础安全防护
+- ✅ Initial version release
+- ✅ Core functional modules completed
+- ✅ Blockchain integration completed
+- ✅ Docker containerized deployment
+- ✅ Basic security protection
 
-## 📄 许可证
+## 📄 License
 
-本项目采用Apache License 2.0许可证 - 查看 [LICENSE](https://github.com/pluckypioneer/Web3_HMS/blob/main/LICENSE) 文件了解详情。
+This project is licensed under the Apache License 2.0 - see the [LICENSE](https://github.com/pluckypioneer/Web3_HMS/blob/main/LICENSE) file for details.
 
-## 🆘 支持与帮助
+## 🆘 Support and Help
 
-### 常见问题
+### Frequently Asked Questions
 
-**Q: 如何重置管理员密码？**
-A: 通过数据库直接修改 users 表中的 password_hash 字段。
+**Q: How to reset the administrator password?**
+A: Directly modify the password_hash field in the users table through the database.
 
-**Q: 区块链交易失败怎么办？**
-A: 检查 Ganache 节点是否正常运行，确认账户余额充足。
+**Q: What to do if a blockchain transaction fails?**
+A: Check if the Ganache node is running normally and ensure the account has sufficient balance.
 
-**Q: 如何添加新的科室？**
-A: 在 departments 表中插入新记录，或通过管理界面添加。
+**Q: How to add a new department?**
+A: Insert a new record in the departments table or add it through the management interface.
 
-### 联系方式
+### Contact Information
 
-- **项目主页**: [GitHub Repository](https://github.com/pluckypioneer/Web3_HMS)
-- **问题反馈**: [GitHub Issues](https://github.com/pluckypioneer/Web3_HMS/issues)
-- **技术交流**: [Discussion Forum]
-- **邮箱联系**: pluckypioneer258@proton.me
+- **Project Homepage**: [GitHub Repository](https://github.com/pluckypioneer/Web3_HMS)
+- **Issue Reporting**: [GitHub Issues](https://github.com/pluckypioneer/Web3_HMS/issues)
+- **Technical Discussion**: [Discussion Forum]
+- **Email Contact**: pluckypioneer258@proton.me
 
-## 🙏 致谢
+## 🙏 Acknowledgments
 
-感谢以下开源项目的支持：
-- [Vue.js](https://vuejs.org/) - 渐进式 JavaScript 框架
-- [Element Plus](https://element-plus.org/) - Vue 3 组件库
-- [Flask](https://flask.palletsprojects.com/) - Python Web 框架
-- [Hardhat](https://hardhat.org/) - 以太坊开发环境
-- [Docker](https://www.docker.com/) - 容器化平台
+Thanks to the support of the following open-source projects:
+- [Vue.js](https://vuejs.org/) - Progressive JavaScript framework
+- [Element Plus](https://element-plus.org/) - Vue 3 component library
+- [Flask](https://flask.palletsprojects.com/) - Python Web framework
+- [Hardhat](https://hardhat.org/) - Ethereum development environment
+- [Docker](https://www.docker.com/) - Containerization platform
 
 ---
 
-**Web3 HMS** - 让医疗数据更安全，让医院管理更智能 🏥✨
+**Web3 HMS** - Making medical data more secure, making hospital management smarter 🏥✨
 
 ## Star History
 

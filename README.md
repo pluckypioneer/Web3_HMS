@@ -2,6 +2,8 @@
 
 DOCUMENT:[Chinese中文](https://github.com/pluckypioneer/Web3_HMS/blob/main/README_zh.md)、[English](https://github.com/pluckypioneer/Web3_HMS/blob/main/README.md)
 
+> 一个人写这个有点太难了，用ai有时候还帮倒忙，越写越觉得是屎山，有愿意接手的我很乐意转让这个repo，要是有人愿意跟我合作我也很开心，谢谢！
+
 A modern hospital management system based on blockchain technology, integrating Solidity, Vue 3, and Flask technology stacks to achieve tamper-proof medical data storage, full-process digital management, and multi-role collaborative work.
 
 > 📌 **Project Status**: Core functionality development completed, ready for normal operation.
@@ -434,3 +436,9 @@ Thanks to the support of the following open-source projects:
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=pluckypioneer/Web3_HMS&type=Date)](https://www.star-history.com/#pluckypioneer/Web3_HMS&Date)
+
+## Support Me
+
+> USDT Address：` 0x2aa1308a4ce8671870ff5984c0b9b5fbf56b597e `
+
+<img src="https://health.john-life.sbs/images/eth.jpg" alt="图片alt" title="OKX打赏">

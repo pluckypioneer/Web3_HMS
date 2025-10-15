@@ -441,4 +441,4 @@ Thanks to the support of the following open-source projects:
 
 > USDT Address：` 0x2aa1308a4ce8671870ff5984c0b9b5fbf56b597e `
 
-![图片alt](https://health.john-life.sbs/images/eth.jpg "OKX打赏" =400x300)
+![图片alt](https://health.john-life.sbs/images/eth.jpg)
